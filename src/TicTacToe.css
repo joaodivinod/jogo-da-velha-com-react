@@ -1,7 +1,12 @@
+:root{
+    --O-color:#2196f3;
+    --X-color:#f44336;
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: 300ms;
 }
 
 body{
@@ -25,6 +30,10 @@ h1 {
     gap: 1rem;
 }
 
+.board.game-over{
+    opacity: 0.5;
+}
+
 .cell{
     display: grid;
     align-items: center;
@@ -37,5 +46,22 @@ h1 {
     color: #00000066;
 
     cursor: pointer;
+}
 
+.cell.O{
+    background-color: var(--O-color);
+
+}
+
+.cell.X{
+    background-color: var(--X-color);
+}
+
+.cell.O , .cell.X, .game-over .cell{
+    cursor: not-allowed;
+}
+
+.cell:not(.O):not(.X):hover{
+    box-shadow: 0 0 3px 0px #00000085;
+    transform: scale(1.1);
 }
