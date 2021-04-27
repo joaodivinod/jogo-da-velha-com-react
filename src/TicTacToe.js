@@ -1,8 +1,26 @@
 import './TicTacToe.css';
+import {useState} from "react";
 
 function TicTacToe() {
+    const emptyBoard = Array(9).fill("");
+    const [board, setboard] = useState(emptyBoard)
+
   return (
-      <span>Jogo da Velha</span>
+      <main>
+        <h1 className="title">Jogo da Velha</h1>
+
+          <div className="board">
+              {board.map((item, index)=>(
+                  <div
+                      key={index}
+                      className={`cell ${item}`}
+                  >
+                      {item}
+                  </div>
+              ))}
+          </div>
+
+      </main>
   );
 }
 
