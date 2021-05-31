@@ -1,5 +1,7 @@
 import './TicTacToe.css';
 import {useEffect, useState} from "react";
+import VeiaR from './assets/img/veia-r.svg'
+import VeiaB from './assets/img/veia-b.svg'
 
 
 function TicTacToe() {
@@ -57,7 +59,7 @@ function TicTacToe() {
     useEffect(checkWinner, [board]);
 
     const resetGame = () => {
-        setCurrentPlayer("0");
+        setCurrentPlayer("O");
         setboard(emptyBoard)
         setWinner(null)
     }
@@ -65,7 +67,15 @@ function TicTacToe() {
 
     return (
         <main>
-            <h1 className="title">Jogo da Velha</h1>
+
+            <header>
+                <div>
+                    <h1 className="title">JOGO  DA VELHA</h1>
+                    <h2>Vez da : <span className={currentPlayer}>{currentPlayer}</span> </h2>
+                </div>
+                {/*<img className="veia" src={Veia} alt=""/>*/}
+                <img className="veia" src={currentPlayer === "X" ? VeiaR : VeiaB } alt=""/>
+            </header>
 
             <div className={`board ${winner ? "game-over" : ""}`}>
                 {board.map((item, index) => (
@@ -78,18 +88,21 @@ function TicTacToe() {
                     </div>
                 ))}
             </div>
-            {winner &&
 
-            <footer className="winner-message">
+            {winner &&
+            <div className="resultado">
 
                 {winner === "E" ?
                     <h2>Empatou</h2>
                     :
-                    <h2>Vencedor : {winner}</h2>
+                   <>
+                       <h2>VENCEDORA {winner} </h2>
+                       <img className="veia veiaResultado" src={winner === "O" ? VeiaB : VeiaR } alt=""/>
+                   </>
                 }
-                <button onClick={resetGame}>Recomeçar</button>
-            </footer>
 
+                <button onClick={resetGame}>Jogar Novamente</button>
+            </div>
             }
         </main>
 
