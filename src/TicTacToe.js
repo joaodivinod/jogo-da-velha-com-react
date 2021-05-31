@@ -46,15 +46,16 @@ function TicTacToe() {
             if (cells.every(cell => cell === "X")) setWinner("X");
         })
 
-        checkDraw();
+
 
     }
 
     const checkDraw = () => {
-        if (board.every(item => item !== "")) {
-            setWinner("E")
+        if (board.every((cell) => cell !== "") && winner === null) {
+            setWinner("X");
         }
-    }
+    };
+    checkDraw();
 
     useEffect(checkWinner, [board]);
 
@@ -96,7 +97,7 @@ function TicTacToe() {
                     <h2>Empatou</h2>
                     :
                    <>
-                       <h2>VENCEDORA {winner} </h2>
+                       <h2>VENCEDORA</h2>
                        <img className="veia veiaResultado" src={winner === "O" ? VeiaB : VeiaR } alt=""/>
                    </>
                 }
