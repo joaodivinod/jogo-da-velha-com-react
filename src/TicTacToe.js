@@ -52,7 +52,7 @@ function TicTacToe() {
 
     const checkDraw = () => {
         if (board.every((cell) => cell !== "") && winner === null) {
-            setWinner("X");
+            setWinner("E");
         }
     };
     checkDraw();
@@ -97,7 +97,7 @@ function TicTacToe() {
                     <h2>Empatou</h2>
                     :
                    <>
-                       <h2>VENCEDORA</h2>
+                       <h2>VENCEDORA {winner} </h2>
                        <img className="veia veiaResultado" src={winner === "O" ? VeiaB : VeiaR } alt=""/>
                    </>
                 }
